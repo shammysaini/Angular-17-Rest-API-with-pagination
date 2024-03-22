@@ -1,0 +1,78 @@
+<div class="header-main">
+<mat-toolbar color="primary" class="mat-elevation-z8">
+    <button (click)="drawer.toggle()"  mat-icon-button>
+        <mat-icon>menu</mat-icon>
+    </button>
+    <a routerLink="/" mat-button><span>Home</span></a>
+    <span class="example-spacer"></span>
+    <a routerLink="/save" mat-button>Sign up</a>
+    <a routerLink="/employee" mat-button>All Employee</a>
+    <a routerLink="/employee/.id" mat-button>Find Employee</a>
+    <mat-menu #lvl1master="matMenu">
+        <button [matMenuTriggerFor]="company" mat-menu-item>Company</button>
+        <button [matMenuTriggerFor]="customer" mat-menu-item>Customer</button>
+        <button [matMenuTriggerFor]="product" mat-menu-item>Product</button>
+    </mat-menu>
+
+    <mat-menu #company="matMenu">
+        <button mat-menu-item>Term</button> 
+        <button mat-menu-item>Tax</button>
+        <button mat-menu-item>Currency</button>
+    </mat-menu>
+    <mat-menu #customer="matMenu">
+        <button mat-menu-item>Type</button>
+        <button mat-menu-item>Tax</button>
+    </mat-menu>
+    <mat-menu #product="matMenu">
+        <button mat-menu-item>Category</button>
+        <button [matMenuTriggerFor]="variant" mat-menu-item>Variant</button>
+        <button mat-menu-item>UOM</button>
+    </mat-menu>
+
+    <mat-menu #variant="matMenu">
+        <button mat-menu-item>Color</button>
+        <button mat-menu-item>Size</button>
+    </mat-menu>
+    <button routerLink="input" mat-button>Input</button>
+    <button routerLink="autocomplete" mat-button>Autocomplete</button>
+    <a href="https://www.youtube.com/channel/UCsbmVmB_or8sVLLEq4XhE_A/join" mat-raised-button color="accent">Join Us</a>
+    <button (click)="badgevisibility()"  mat-icon-button>
+        <mat-icon matBadgeColor="accent" matBadge="15" [matBadgeHidden]="badgevisible" matBadgeSize="small">notifications</mat-icon>
+    </button>
+</mat-toolbar>
+<mat-drawer-container autosize>
+    <mat-drawer #drawer opened="false" mode="side" position="start">
+    <mat-nav-list>
+        <mat-list-item>
+            <button routerLink="card" mat-button><mat-icon>dashboard</mat-icon> Dashboard</button>
+        </mat-list-item>
+        <mat-list-item>
+            <button routerLink="/save" mat-button><mat-icon>home</mat-icon> Sign Up</button>
+        </mat-list-item>
+        <mat-list-item>
+            <button routerLink="slider" mat-button><mat-icon>explore</mat-icon> Slider</button>
+        </mat-list-item>
+        <mat-list-item>
+            <button routerLink="table" mat-button><mat-icon>table</mat-icon> Table</button>
+        </mat-list-item>
+        <mat-list-item>
+            <button mat-button><mat-icon>settings</mat-icon> Settings</button>
+        </mat-list-item>
+        <mat-list-item>
+            <button mat-button><mat-icon>help</mat-icon> Help</button>
+        </mat-list-item>
+        <mat-list-item>
+            <button mat-button><mat-icon>analytics</mat-icon> analytics</button>
+        </mat-list-item>
+    </mat-nav-list>
+    </mat-drawer>
+    <mat-drawer-content class="dynamic-content">
+        <!-- <div style="text-align: center;min-height: 600px;">
+            
+            </div> -->
+    </mat-drawer-content>
+</mat-drawer-container>
+
+</div> 
+
+   

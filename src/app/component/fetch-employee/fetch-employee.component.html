@@ -1,0 +1,86 @@
+<app-header></app-header>
+<div class="mat-elevation-z8">
+  <div class="w-full">
+    <mat-form-field class="w-full">
+      <mat-label>Filter</mat-label>
+      <input
+        matInput
+        [(ngModel)]="search"
+        (keyup)="applyFilter($event)"
+        placeholder="Ex. Mia"
+        #input
+      />
+    </mat-form-field>
+    <a routerLink="/save" mat-button><button class="btn btn-success add-emp">Add Employee</button></a> 
+  </div>
+<table mat-table [dataSource]="dataSource" matSort (matSortChange)="announceSortChange($event)" class="mat-elevation-z8 demo-table">
+    <!-- Position Column -->
+    <ng-container matColumnDef="Id">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header="id" sortActionDescription="Sort by Id"> Id. </th>
+      <td mat-cell *matCellDef="let element"> {{element.id}} </td>
+    </ng-container>
+  
+    <!-- Name Column -->
+    <ng-container matColumnDef="Name">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header="name" sortActionDescription="Sort by Name"> Name </th>
+      <td mat-cell *matCellDef="let element"> {{element.name}} </td>
+    </ng-container>
+  
+    <!-- Address Column -->
+    <ng-container matColumnDef="Address">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header="address" sortActionDescription="Sort by Address"> Address </th>
+      <td mat-cell *matCellDef="let element"> {{element.address}} </td>
+    </ng-container>
+  
+    <!-- Email Column -->
+    <ng-container matColumnDef="Email">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header="email" sortActionDescription="Sort by Email"> Email </th>
+      <td mat-cell *matCellDef="let element"> {{element.email}} </td>
+    </ng-container>
+
+    <!-- Contact Column -->
+    <ng-container matColumnDef="Contact">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header="phone" sortActionDescription="Sort by Email"> Contact </th>
+        <td mat-cell *matCellDef="let element"> {{element.phone}} </td>
+      </ng-container>
+      <!-- Country Column -->
+      <ng-container matColumnDef="Country">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header="country" sortActionDescription="Sort by Country"> Country </th>
+        <td mat-cell *matCellDef="let element"> {{element.country}} </td>
+      </ng-container>
+        <!-- Term Column -->
+      <ng-container matColumnDef="Term">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header="term" sortActionDescription="Sort by Term"> Term </th>
+        <td mat-cell *matCellDef="let element"> {{element.term}} </td>
+      </ng-container>
+        <!-- Dob Column -->
+      <ng-container matColumnDef="Dob" >
+        <th mat-header-cell *matHeaderCellDef mat-sort-header="dob" sortActionDescription="Sort by Dob"> Date of Birth </th>
+        <td mat-cell *matCellDef="let element"> {{element.dob}} </td>
+      </ng-container>
+        <!-- Active Column -->
+      <ng-container matColumnDef="Active">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header=" is_Active" sortActionDescription="Sort by  is Active"> Active </th>
+        <td mat-cell *matCellDef="let element"> {{element.is_Active}} </td>
+      </ng-container>
+        <!-- Action Column -->
+      <ng-container matColumnDef="Action">
+        <th mat-header-cell *matHeaderCellDef> Action </th>
+        <td mat-cell *matCellDef="let element"><button mat-raised-button type="button" color="primary" class="btn btn-success" (click)="editWarning(element.id!)">
+         Edit   </button>&nbsp;&nbsp; <button mat-raised-button type="button" color="warn" class="btn btn-danger" (click)="warning(element.id)">
+           Delete  </button> </td>
+        
+      </ng-container>
+      <!-- display header Column -->
+     <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+    <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr> 
+
+  </table>
+  <!-- Pagination Column -->
+  <div class="mat-pagin">
+  <mat-paginator [pageSizeOptions]="[5, 10, 20]"
+                 showFirstLastButtons
+                 aria-label="Select page of periodic elements">
+  </mat-paginator>
+</div>
+</div>
